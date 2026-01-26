@@ -251,6 +251,6 @@ This showcase demonstrates:
 
 **Built with zero infrastructure costs in mind, not expensive cloud services.**
 
-*For architecture walkthroughs and deeper technical details, please contact: [jbjhun@gmail.com](mailto:jbjhun@gmail.com)*
+*For architecture walkthroughs and deeper technical details, please [contact via LinkedIn](https://linkedin.com/in/junebay)*
 
 </div>
