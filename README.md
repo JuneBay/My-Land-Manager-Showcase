@@ -3,7 +3,7 @@
 **Senior Solution Architect | Geospatial Decision Support System**
 
 [![Live Demo](https://img.shields.io/badge/Vercel-Live_Demo-black?style=for-the-badge&logo=vercel)](https://my-land-manager.vercel.app)
-[![GitHub](https://img.shields.io/badge/GitHub-Source_Code-black?style=for-the-badge&logo=github)](https://github.com/JuneBay/My-Land-Manager)
+[![GitHub](https://img.shields.io/badge/GitHub-Showcase-black?style=for-the-badge&logo=github)](https://github.com/JuneBay/My-Land-Manager-Showcase)
 
 ---
 
@@ -226,7 +226,7 @@ MyLandManager/
 
 ## 🔗 Related Resources
 
-- **Source Code**: [My-Land-Manager Repository](https://github.com/JuneBay/My-Land-Manager)
+- **Showcase Repository**: [My-Land-Manager-Showcase](https://github.com/JuneBay/My-Land-Manager-Showcase)
 - **Live Demo**: [Vercel Deployment](https://my-land-manager.vercel.app)
 - **Technical Details**: See [`Geospatial_Logic_Snippet.js`](./Geospatial_Logic_Snippet.js) for implementation highlights
 
