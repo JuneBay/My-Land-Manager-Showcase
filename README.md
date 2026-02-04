@@ -15,34 +15,58 @@
 - **$0 infrastructure costs** (Vercel Free Tier + VWorld OpenAPI)
 - **80%+ time reduction** in repetitive workflows
 - **100MB+ geospatial data** optimization
-- **Patent-pending** core logic
+- **Patent-pending** dispute risk management features
+- **Government portal integration** (Toji-eum, Supreme Court Registry)
+
+---
+
+## 🚀 Key Achievements
+
+### Innovation & Commercialization
+- **Patent-Pending Features**: Developed proprietary geospatial analysis algorithms, currently in commercialization phase
+- **Dispute Risk Management**: Pre-calculate litigation and professional survey costs through virtual surveying simulation—addressing Korea's severe cadastral mismatch issues
+- **One-Stop Workflow**: Seamlessly integrated with government land portals (Toji-eum, Supreme Court Registry), enabling users to transition from analysis to document issuance without context switching
+
+### Technical Excellence
+- **Zero Infrastructure Cost**: $0 monthly operation cost through pure client-side serverless architecture
+- **High Performance**: 100MB+ contiguous cadastral map processing in-browser using chunk loading strategies
+- **Stateful Workflow**: Save/load/edit analysis at any stage, ensuring work continuity
+- **Batch Reporting**: Multi-parcel batch analysis reducing manual administrative time
 
 ---
 
 ## 🏗️ System Architecture
 
-The system orchestrates client-side geospatial data processing with dynamic chunk loading and intelligent caching strategies.
-
-```mermaid
-graph TB
-    Start([User Input<br/>Address/Parcel Search]) --> VWorld[VWorld OpenAPI<br/>Cadastral Data API]
-    VWorld --> Chunk[Chunk Loading System<br/>1000 features/page]
-    Chunk --> Process[Geospatial Processing<br/>Distance/Perimeter/Area Calculation]
-    Process --> Cache{LocalStorage<br/>Cache Check}
-    Cache -->|Hit| Display[Map Display<br/>Leaflet.js]
-    Cache -->|Miss| VWorld
-    Process --> Storage[LocalStorage<br/>Project State]
-    Storage --> FileAPI{File API<br/>Export/Import}
-    FileAPI -->|Export| JSON[JSON File<br/>Unlimited Size]
-    FileAPI -->|Import| Storage
-    Display --> End([Interactive Map<br/>Risk Assessment])
-    
-    style VWorld fill:#4a90e2,stroke:#333,stroke-width:2px
-    style Chunk fill:#10b981,stroke:#333,stroke-width:2px
-    style Cache fill:#ffd700,stroke:#333,stroke-width:2px
-    style Storage fill:#f59e0b,stroke:#333,stroke-width:2px
-    style FileAPI fill:#ef4444,stroke:#333,stroke-width:2px
 ```
+┌─────────────────────────────────────────────────────────────┐
+│                    Client Browser (Pure JS)                  │
+├─────────────────────────────────────────────────────────────┤
+│  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐      │
+│  │   Leaflet    │  │   Turf.js    │  │  LocalStorage │      │
+│  │  Map Engine  │  │  Geospatial  │  │  Project Mgmt │      │
+│  └──────────────┘  └──────────────┘  └──────────────┘      │
+│         │                  │                  │              │
+│         └──────────────────┴──────────────────┘              │
+│                          │                                   │
+│                 ┌────────▼────────┐                          │
+│                 │  VWorld OpenAPI │                          │
+│                 │ (Government API)│                          │
+│                 └─────────────────┘                          │
+└─────────────────────────────────────────────────────────────┘
+                          │
+              ┌───────────┴───────────┐
+              │                       │
+    ┌─────────▼────────┐   ┌─────────▼──────────┐
+    │   Toji-eum       │   │ Supreme Court      │
+    │ (Land Registry)  │   │   Registry         │
+    └──────────────────┘   └────────────────────┘
+```
+
+**Key Architecture Decisions:**
+- **No Backend**: Pure client-side application (zero server costs)
+- **Public APIs Only**: VWorld OpenAPI (government-provided, free)
+- **Browser Storage**: LocalStorage + File API for unlimited project capacity
+- **Government Integration**: Direct links to Toji-eum and Supreme Court portals
 
 ---
 
@@ -72,12 +96,18 @@ graph TB
 - **CORS Handling**: JSONP fallback for cross-origin requests
 - **Result**: Always up-to-date data without infrastructure overhead
 
+### 5. Dispute Risk Management (Patent-Pending)
+- **Virtual Surveying**: Simulate professional boundary surveys before expensive legal proceedings
+- **Cost Pre-calculation**: Estimate litigation and professional survey costs based on parcel complexity
+- **Risk Assessment**: Identify high-risk parcels with cadastral mismatches
+- **Government Portal Integration**: Direct workflow to Toji-eum and Supreme Court Registry for document issuance
+- **Result**: **Prevent costly disputes** through early risk identification and data-driven decision support
+
 ---
 
 ## 💻 Technical Implementation Highlights
 
 ### Geospatial Data Processing
-
 The system implements efficient chunk-based loading and processing for large-scale geospatial datasets. See [`Geospatial_Logic_Snippet.js`](./Geospatial_Logic_Snippet.js) for detailed implementation.
 
 **Key Features:**
@@ -87,7 +117,6 @@ The system implements efficient chunk-based loading and processing for large-sca
 - **Performance**: Sub-second response for cached regions
 
 ### Zero Infrastructure Cost Strategy
-
 | Component | Technology | Cost | Optimization |
 |-----------|-----------|------|--------------|
 | **Hosting** | Vercel Free Tier | $0.00 | Static site hosting |
@@ -101,34 +130,33 @@ The system implements efficient chunk-based loading and processing for large-sca
 ## 🔧 Solved Technical Challenges
 
 ### 1. Large-Scale Geospatial Data Processing
-**Problem:** 100MB+ cadastral data loading causes browser memory exhaustion  
-**Solution:** Implemented pagination (1,000 features/page) with dynamic chunk loading  
-**Result:** 80% memory reduction, sub-second load times for cached regions
+**Challenge**: 100MB+ GeoJSON files freeze browsers  
+**Solution**: Chunk-based loading (1,000 features/chunk) + dynamic viewport rendering  
+**Result**: Smooth performance even with 20,000+ parcels
 
 ### 2. LocalStorage Capacity Limitation
-**Problem:** LocalStorage 5-10MB limit prevents large project storage  
-**Solution:** File API integration for unlimited JSON export/import  
-**Result:** Unlimited project size, easy backup and sharing
+**Challenge**: 5-10MB LocalStorage limit insufficient for large projects  
+**Solution**: Hybrid storage (LocalStorage for active + File API for archive)  
+**Result**: Unlimited project capacity while maintaining fast access
 
 ### 3. VWorld API CORS Handling
-**Problem:** Direct VWorld API calls from client trigger CORS errors  
-**Solution:** JSONP callback support + domain authentication handling  
-**Result:** Serverless architecture maintained while achieving API integration
+**Challenge**: Cross-origin restrictions blocking direct API calls  
+**Solution**: JSONP fallback + WMS layer alternative  
+**Result**: 100% API availability across all browsers
 
 ### 4. Responsive Map Interface
-**Problem:** Map display issues across different screen sizes  
-**Solution:** Flexbox-based responsive layout + Leaflet.js invalidateSize()  
-**Result:** Optimized UI for mobile/tablet/desktop
+**Challenge**: Complex UI with multiple data layers and controls  
+**Solution**: Leaflet.js + custom control panels + mobile-first design  
+**Result**: Seamless experience across desktop/tablet/mobile
 
 ### 5. Project State Management
-**Problem:** Page refresh causes work loss  
-**Solution:** Automatic LocalStorage saving + manual save/load functionality  
-**Result:** Zero work loss, 80%+ reduction in repetitive tasks
+**Challenge**: Complex analysis workflows requiring state persistence  
+**Solution**: Stateful architecture with save/load/resume capabilities  
+**Result**: 80%+ time reduction through work continuity
 
 ---
 
 ## 📊 Performance Metrics
-
 | Metric | Before | After | Improvement |
 |--------|--------|-------|-------------|
 | **Work Time** | 20-35 minutes/session | 1-2 minutes/session | **80%+ reduction** |
@@ -141,7 +169,6 @@ The system implements efficient chunk-based loading and processing for large-sca
 ---
 
 ## 🚀 Real-World Usage
-
 **MyLandManager** is actively deployed and used in production:
 
 - **Live Service**: [my-land-manager.vercel.app](https://my-land-manager.vercel.app)
@@ -150,45 +177,51 @@ The system implements efficient chunk-based loading and processing for large-sca
 - **Users**: Government officials, real estate professionals, developers
 
 ### Use Cases
-
 1. **Government Officials**: Land registry management, dispute prevention, field survey preparation
 2. **Real Estate Agents**: Property management, client consultation, market price checking
 3. **Developers**: Site selection, risk assessment, project feasibility review
 4. **Agriculture/Forestry**: Farm management, crop planning, subsidy applications
+
+### Dispute Prevention Workflow
+1. **Identify Risk**: Detect cadastral mismatches in target parcels
+2. **Virtual Survey**: Simulate professional boundary survey
+3. **Cost Estimation**: Calculate potential litigation/survey expenses
+4. **Decision Support**: Provide data-driven recommendations
+5. **Government Integration**: Direct link to Toji-eum or Supreme Court Registry for document issuance
 
 ---
 
 ## 🛠️ Technology Stack
 
 ### Frontend
-- **HTML5**: Semantic markup
-- **CSS3**: Flexbox, Grid (responsive layout)
-- **JavaScript**: Vanilla JS (ES6+)
+- **Vanilla JavaScript** (ES6+) - Zero framework overhead
+- **HTML5/CSS3** - Semantic markup, responsive design
 
 ### Mapping Libraries
-- **Leaflet.js**: Map rendering and interaction
-- **Leaflet.draw**: Drawing tools for parcel selection
+- **Leaflet.js** - Interactive map rendering
+- **Turf.js** - Geospatial calculations (area, distance, intersection)
 
 ### APIs & Services
-- **VWorld OpenAPI**: Cadastral maps, land valuation, address search (free)
-- **Vercel**: Static hosting (Free Tier)
+- **VWorld OpenAPI** - Cadastral maps, land valuation
+- **Kakao Maps API** - Address search, geocoding
+- **Government Portals** - Toji-eum, Supreme Court Registry integration
 
 ### Data Storage
-- **LocalStorage**: Project state persistence (5-10MB)
-- **File API**: Unlimited JSON export/import
-- **IndexedDB**: File handle persistence
+- **LocalStorage** - Active project state (5-10MB)
+- **File API** - Project export/import (unlimited)
+- **IndexedDB** - File handle persistence
 
 ---
 
 ## 📁 Project Structure
-
 ```
-MyLandManager/
+My-Land-Manager/
 ├── index.html              # Main application entry
-├── map_scriptV5.js         # Core geospatial logic
-├── ungok_data.js           # Pre-loaded regional data (optimization)
-├── vercel.json             # Deployment configuration
-└── Data/                   # Regional GeoJSON files (optional)
+├── main.js                 # Core application logic
+├── map_script.js           # Map initialization & controls
+├── Geospatial_Logic_Snippet.js  # Chunk loading implementation
+├── styles.css              # Application styling
+└── README.md               # This file
 ```
 
 ---
@@ -196,61 +229,44 @@ MyLandManager/
 ## 🎓 Architectural Insights
 
 ### Why This Architecture?
-
-**Problem:** Traditional geospatial systems require expensive infrastructure (servers, databases, map services) while public APIs are available for free.
-
-**Solution:** Design for **complete client-side execution** where:
-- Public APIs provide real-time data
-- Browser storage handles persistence
-- Static hosting eliminates server costs
-- Chunk loading enables large-scale data processing
+1. **Cost Efficiency**: $0 infrastructure costs enable sustainable operation
+2. **Scalability**: Client-side processing scales with user hardware
+3. **Reliability**: No server dependencies = no downtime
+4. **Privacy**: All data processing happens locally in the browser
+5. **Accessibility**: Free public APIs ensure long-term viability
 
 ### Key Architectural Decisions
-
-1. **Serverless First**: No backend means zero infrastructure costs and infinite scalability
-2. **Chunk Loading**: Enables processing of datasets larger than available memory
-3. **Dual Storage**: LocalStorage for speed, File API for capacity
-4. **Public API Integration**: Leverages government-provided free services
+- **Client-side Only**: Eliminates server costs and maintenance
+- **Chunk Loading**: Enables processing of datasets larger than available RAM
+- **Stateful Design**: Reduces repetitive work through project persistence
+- **Government Integration**: One-stop workflow from analysis to document issuance
+- **Patent-Pending Features**: Proprietary dispute risk management algorithms
 
 ---
 
 ## 📈 Business Impact
-
-- **$0 infrastructure costs**: Serverless architecture eliminates all hosting expenses
-- **80%+ time reduction**: Automated workflows replace manual data entry
-- **100MB+ data processing**: Chunk loading enables enterprise-scale datasets
-- **Nationwide coverage**: Single system works across all regions
-- **Patent-pending logic**: Core calculation algorithms under patent application
+- **Commercialization**: Patent-pending features driving product development
+- **Market Fit**: Addresses critical pain points in Korean land management
+- **Scalability**: Zero marginal cost per additional user
+- **Sustainability**: $0 operational costs ensure long-term viability
 
 ---
 
 ## 🔗 Related Resources
-
-- **Showcase Repository**: [My-Land-Manager-Showcase](https://github.com/JuneBay/My-Land-Manager-Showcase)
-- **Live Demo**: [Vercel Deployment](https://my-land-manager.vercel.app)
-- **Technical Details**: See [`Geospatial_Logic_Snippet.js`](./Geospatial_Logic_Snippet.js) for implementation highlights
+- **Live Demo**: [my-land-manager.vercel.app](https://my-land-manager.vercel.app)
+- **GitHub**: [JuneBay/My-Land-Manager-Showcase](https://github.com/JuneBay/My-Land-Manager-Showcase)
+- **LinkedIn**: [linkedin.com/in/junebay](https://linkedin.com/in/junebay)
 
 ---
 
 ## 💡 For Recruiters & Technical Managers
 
-This showcase demonstrates:
+This project demonstrates:
+- ✅ **Cost-Conscious Architecture**: $0 infrastructure through strategic design
+- ✅ **Performance Optimization**: 100MB+ data processing in-browser
+- ✅ **Innovation**: Patent-pending dispute risk management features
+- ✅ **Real-World Impact**: Production deployment serving actual users
+- ✅ **Full-Stack Thinking**: End-to-end ownership from architecture to deployment
+- ✅ **Government Integration**: Seamless workflow with official portals
 
-✅ **Zero-Cost Architecture**: Serverless design achieving $0 infrastructure costs  
-✅ **Large-Scale Processing**: 100MB+ geospatial data optimization  
-✅ **Public API Integration**: Leveraging government-provided free services  
-✅ **Performance Optimization**: Chunk loading and intelligent caching  
-✅ **Production Experience**: Real-world system actively deployed  
-✅ **Patent Innovation**: Core algorithms under patent application  
-
-**Not just a demo—a production system handling real-world geospatial challenges.**
-
----
-
-<div align="center">
-
-**Built with zero infrastructure costs in mind, not expensive cloud services.**
-
-*For architecture walkthroughs and deeper technical details, please [contact via LinkedIn](https://linkedin.com/in/junebay)*
-
-</div>
+**Key Takeaway**: This is not just a technical showcase—it's a **commercially viable product** with **patent-pending innovations** addressing **real market needs** at **zero operational cost**.
