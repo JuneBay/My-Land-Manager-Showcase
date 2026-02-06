@@ -98,6 +98,7 @@ Designed and built a **Land Parcel Management System** to manage multiple land p
 #### 5. Geospatial Calculation
 - **Auto-Distance:** Automatic parcel-to-parcel distance
 - **Perimeter:** Auto-calculation of boundary length
+- **Shared Boundary Analysis (new):** Automatic detection and visualization of shared boundaries between parcels using Turf.js `lineOverlap`.
 - **Risk Assessment:** Proactive risk scoring based on proximity to structures
 
 ---
@@ -112,6 +113,7 @@ Designed and built a **Land Parcel Management System** to manage multiple land p
 ### Mapping & GIS
 - **Leaflet.js:** 1.9.x for map rendering and interaction
 - **Leaflet.draw:** Vector drawing capabilities
+- **Turf.js:** Advanced geospatial analysis (intersections, unions, measurements)
 
 ### APIs & Services
 - **VWorld OpenAPI:** Cadastral maps, valuation data
