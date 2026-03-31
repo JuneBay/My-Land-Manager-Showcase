@@ -32,7 +32,7 @@ Designed and built a **Land Parcel Management System** to manage multiple land p
 ### 2. Cost Reduction
 - **$0 Infrastructure Cost:** Serverless architecture (Vercel Free Tier + VWorld OpenAPI)
 - **Reduced Site Visits:** Eliminated unnecessary trips through automated pre-calculation
-- ** Minimized Rework:** Reduced repetitive visits and document re-verification
+- **Minimized Rework:** Reduced repetitive visits and document re-verification
 
 ### 3. Time Efficiency
 - **Before:** Manual map search + data entry (20-35 mins/task)

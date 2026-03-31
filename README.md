@@ -101,4 +101,5 @@ Serverless web application for integrated land parcel management. Combines VWorl
 
 - **Profile**: [github.com/JuneBay](https://github.com/JuneBay)
 - **LinkedIn**: [linkedin.com/in/junebay](https://linkedin.com/in/junebay)
-- **Contact**: Via LinkedIn only
+
+- **Web**: [macrobay.kr](https://macrobay.kr)
