@@ -23,7 +23,7 @@
 
 Serverless web application for integrated land parcel management. Combines VWorld public cadastral data with surrounding infrastructure information to support pre-calculation, risk assessment, and dispute prevention.
 
-**Patent filed** for dispute risk management features.
+Proprietary methodology for dispute risk management.
 
 ### At a Glance
 
@@ -33,7 +33,6 @@ Serverless web application for integrated land parcel management. Combines VWorl
 | **Live URL** | [landmanager.co.kr](https://landmanager.co.kr) |
 | **Infrastructure Cost** | $0/month (Vercel Free Tier + VWorld OpenAPI) |
 | **Architecture** | Pure client-side, no backend server |
-| **Patent** | Filed — dispute risk management |
 | **Status** | Production, actively maintained |
 
 ---
@@ -65,7 +64,7 @@ Serverless web application for integrated land parcel management. Combines VWorl
 
 ## Core Features
 
-### Dispute Risk Management (Patent Filed)
+### Dispute Risk Management
 - Virtual surveying simulation before costly legal proceedings
 - Litigation and professional survey cost pre-calculation
 - High-risk parcel identification via cadastral mismatch detection
