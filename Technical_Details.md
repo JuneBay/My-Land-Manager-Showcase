@@ -23,7 +23,7 @@ Designed and built a **Land Parcel Management System** to manage multiple land p
 ## 🎯 Key Achievements & Metrics
 
 ### 1. Quality & Risk Management
-- **Dispute Risk Management (Patent Pending):** Pre-validation of boundary disputes via virtual surveying
+- **Dispute Risk Management:** Pre-validation of boundary disputes via virtual surveying
 - **Government Portal Integration:** Seamless integration with Toji-eum and Supreme Court Registry
 - **One-Stop Workflow:** From analysis to document issuance in a single flow
 - **Data Integration:** Unified view of cadastral maps, land valuation, and structure data
