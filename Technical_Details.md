@@ -37,7 +37,7 @@ Designed and built a **Land Parcel Management System** to manage multiple land p
 ### 3. Time Efficiency
 - **Before:** Manual map search + data entry (20-35 mins/task)
 - **After:** Load saved project state (1-2 mins/task)
-- **Improvement:** >80% reduction in processing time
+- **Improvement:** substantially reduced processing time
 
 ### 4. Scalability
 - **Public API Integration:** Standardized workflow applicable nationwide via VWorld OpenAPI
@@ -130,7 +130,7 @@ Designed and built a **Land Parcel Management System** to manage multiple land p
 ### 1. Handling Large Geospatial Data
 **Problem:** Loading 100MB+ cadastral data crashed browser memory.
 **Solution:** Implemented dynamic chunk loading and viewport-based rendering.
-**Result:** 80% reduction in memory usage, faster load times.
+**Result:** substantially lower memory usage, faster load times.
 
 ### 2. LocalStorage Limits
 **Problem:** 5-10MB limit insufficient for large projects.
@@ -150,18 +150,13 @@ Designed and built a **Land Parcel Management System** to manage multiple land p
 ### 5. Project State Persistence
 **Problem:** Data loss on page refresh.
 **Solution:** Auto-save to LocalStorage + manual JSON export.
-**Result:** 0% data loss, >80% reduction in repetitive entry.
+**Result:** no data loss, greatly reduced repetitive entry.
 
 ---
 
 ## 📊 Performance Comparison
 
-| Metric | Manual Process | Automated System | Improvement |
-|--------|----------------|------------------|-------------|
-| **Task Time** | 20-35 mins/task | 1-2 mins/task | **>80% Faster** |
-| **Infra Cost** | Server + DB costs | **$0** (Serverless) | **100% Savings** |
-| **Site Visits** | Required every time | Eliminated unnecessary trips | **Cost Reduction** |
-| **Scalability** | Region-specific setup | Nationwide standard | **Highly Scalable** |
+Compared with a manual process, the system cuts per-task time substantially, runs at **$0** (serverless), eliminates unnecessary site visits, and scales nationwide from a single standard build.
 
 ---
 
