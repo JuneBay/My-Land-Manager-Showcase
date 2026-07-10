@@ -73,7 +73,7 @@ Proprietary methodology for dispute risk management.
 ### Stateful Workflow
 - Save/load/edit analysis at any stage
 - LocalStorage for active projects + File API for archiving
-- 80%+ time reduction through project reuse
+- substantial time reduction through project reuse
 
 ### Large-Scale Data Handling
 - 100MB+ contiguous cadastral map processing in-browser
